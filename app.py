@@ -16,5 +16,10 @@ for uploaded_file in uploaded_files:
     df = pd.read_csv(uploaded_file)
     st.write(df)
 
-cuota = lf.cuota_prestamo(100,0.10,5,12)
-st.write(cuota)
+monto = st.number_input("Ingrese monto:", min_value = 0, max_value = 10000, value=1000)
+interes = st.number_input("Ingrese el interés:", min_value = 0.0, max_value = 1.0, value=0.10)
+anios = st.number_input("Ingrese el número de años del prestamo:", value = 1)
+numero_pagos = st.number_input("Ingrese el número de pagos anuales:", value = 12)
+
+cuota = lf.cuota_prestamo(monto, interes, anios, numero_pagos)
+st.write("Su cuota mensual es:", cuota)
